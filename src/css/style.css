@@ -100,7 +100,7 @@ h1, h2 {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(42, 9, 160, 0.9); /* Полупрозрачный фон */
+  background-color: rgba(235, 18, 18, 0.9); /* Полупрозрачный фон */
   padding: 10px 40px;
   border: 2px solid #333; /* Темная рамка для сообщения */
   border-radius: 10px;
