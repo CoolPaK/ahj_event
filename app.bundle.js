@@ -125,6 +125,7 @@ class GamePlay {
     this.gameEls.goblin = document.createElement("img");
     this.gameEls.goblin.classList.add("goblin");
     this.gameEls.goblin.src = goblin;
+    this.gameEls.goblin.dataset.goblin = "true";
   }
 
   showGoblin() {
@@ -183,6 +184,7 @@ class GameController {
     this.hits = 0;
     this.skip.currentCount = this.skip.maxCount;
     this.gamePlay.hideGameMessage();
+
     setTimeout(() => {
       this.gamePlay.showGoblin();
       this.gamePlay.moveGoblin(this.position.getRandomPosition());
@@ -205,12 +207,12 @@ class GameController {
 
   onGameBoardClick(target) {
     if (!this.isGameRunning) return;
-    if (this.try.success) return;
-    if (target.classList.contains("goblin")) {
-      this.try.success = true;
-      this.hits += 1;
-      this.gamePlay.setHitsValue(this.hits);
-    }
+    const isGoblinClicked = target.dataset.goblin === "true";
+    if (this.try.success || !isGoblinClicked) return;
+
+    this.try.success = true;
+    this.hits += 1;
+    this.gamePlay.setHitsValue(this.hits);
   }
 }
 
